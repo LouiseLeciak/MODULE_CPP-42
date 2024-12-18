@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:24:41 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/18 09:39:52 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/12/18 09:58:14 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,19 @@ int main()
 	std::cout << "\ne = " << e;
 	std::cout << "\nf = " << f << std::endl;
 }
+
+// int main( void ) {
+// int a = 2;
+// int b = 3;
+// ::swap( a, b );
+// std::cout << "a = " << a << ", b = " << b << std::endl;
+// std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+// std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+// std::string c = "chaine1";
+// std::string d = "chaine2";
+// ::swap(c, d);
+// std::cout << "c = " << c << ", d = " << d << std::endl;
+// std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+// std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+// return 0;
+// }
