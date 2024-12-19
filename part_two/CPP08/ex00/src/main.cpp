@@ -6,19 +6,19 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 12:48:38 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/19 07:57:34 by lleciak          ###   ########.fr       */
+/*   Updated: 2024/12/19 08:20:28 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/easyfind.hpp"
 #include <vector>
 
-
 int main(void)
 {
     try
     {
-        std::vector<int>tab;
+        std::vector<int>tab;     
+        
         tab.push_back(1);
         tab.push_back(2);
         tab.push_back(42);
