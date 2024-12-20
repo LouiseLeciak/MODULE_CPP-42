@@ -6,16 +6,16 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 07:09:53 by lleciak           #+#    #+#              #
-#    Updated: 2024/12/05 13:10:06 by lleciak          ###   ########.fr        #
+#    Updated: 2024/12/20 13:49:38 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##########################################################
 #######ARGUMENTS
 
-NAME            = Form
+NAME            = converter
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98
-FILES           = main.cpp
+FILES           = src/main.cpp src/ScalarConverter.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f
