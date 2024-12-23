@@ -6,16 +6,16 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 07:09:53 by lleciak           #+#    #+#              #
-#    Updated: 2024/12/05 13:10:06 by lleciak          ###   ########.fr        #
+#    Updated: 2024/12/23 08:25:00 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##########################################################
 #######ARGUMENTS
 
-NAME            = Form
+NAME            = serializer
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98
-FILES           = main.cpp
+FILES           = src/main.cpp src/Serializer.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f
