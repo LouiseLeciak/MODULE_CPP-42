@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:22:22 by lleciak           #+#    #+#             */
-/*   Updated: 2025/02/13 13:40:57 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:49:38 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 #define INT 102
 #define FLOAT 103
 #define DOUBLE 104
+
+#define INF 200
+#define INFF 201
+#define MINF 202
+#define MINFF 203
+#define NAN 204
+#define NANF 205
 
 class ScalarConverter
 {

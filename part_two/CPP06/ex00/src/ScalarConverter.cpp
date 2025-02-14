@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:24:41 by lleciak           #+#    #+#             */
-/*   Updated: 2025/02/14 15:40:44 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:54:04 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ std::vector<std::string> splitString(std::string str, char sep){
 /////////////////////////////////parsing//////////////////////////
 
 int	pseudoLitCheck(std::string literal){
-	std::string	pseudo_lit[] = {"inf", "inff", "-inf", "-inff", "nan", "nanf", "eot"};
+	std::string	pseudo_lit[] = {"+inf", "+inff", "-inf", "-inff", "nan", "nanf", "eot"};
 	int	i = 0;
 	
 	while (pseudo_lit[i] != "eot"){
 		if (literal == pseudo_lit[i])
-			return (i);
+			return (i + 200);
 		i++;
 	}
 	return(-1);
@@ -145,6 +145,8 @@ void	charLit(std::string input)
 		std::cout << "CHAR:    " << "non displayable character." << std::endl;
 	else
 		std::cout << "CHAR:    " << "\'" << c << "\'" << std::endl;
+		
+	std::cout.setf(std::ios::fixed);
 	if (c < -std::numeric_limits<float>::max() || c > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
@@ -173,6 +175,7 @@ void	intLit(std::string input)
 		
 	std::cout.setf(std::ios::fixed);// flag for the 0.0f state
 	
+	std::cout.setf(std::ios::fixed);
 	if (i < -std::numeric_limits<float>::max() || i > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
@@ -200,10 +203,11 @@ void	floatLit(std::string input)
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(f) << "\'" << std::endl;
 
+	std::cout.setf(std::ios::fixed);
 	if (f < -std::numeric_limits<float>::max() || f > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
-		std::cout << "FLOAT:   " << static_cast<float>(f) << "f" << std::endl;
+		std::cout << "FLOAT:   " << f << "f" << std::endl;
 	
 	std::cout << "DOUBLE:  " << static_cast<double>(f) << std::endl;
 }
@@ -228,12 +232,60 @@ void	doubleLit(std::string input)
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(d) << "\'" << std::endl;
 		
+	std::cout.setf(std::ios::fixed);
 	if (d < -std::numeric_limits<float>::max() || d > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
 		std::cout << "FLOAT:   " << static_cast<float>(d) << "f"<< std::endl;
 	std::cout << "DOUBLE:  " << d << std::endl;
 }
+
+void		pseudoLit(std::string literal, int p)
+{
+	if (p == INF)
+	{
+		std::cout << "INT:     " << "impossible." << std::endl;
+		std::cout << "CHAR:    " << "impossible." << std::endl;
+		std::cout << "FLOAT:   " << literal << "f" << std::endl;
+		std::cout << "DOUBLE:  " << literal << std::endl;
+	}
+	if (p == INFF)
+	{
+		std::cout << "INT:     " << "impossible." << std::endl;
+		std::cout << "CHAR:    " << "impossible." << std::endl;
+		std::cout << "FLOAT:   " << literal << std::endl;
+		std::cout << "DOUBLE:  " << "+inf" << std::endl;
+	}
+	if (p == MINF)
+	{
+		std::cout << "INT:     " << "impossible." << std::endl;
+		std::cout << "CHAR:    " << "impossible." << std::endl;
+		std::cout << "FLOAT:   " << literal << "f" << std::endl;
+		std::cout << "DOUBLE:  " << literal << std::endl;
+	}
+	if (p == MINFF)
+	{
+		std::cout << "INT:     " << "impossible." << std::endl;
+		std::cout << "CHAR:    " << "impossible." << std::endl;
+		std::cout << "FLOAT:   " << literal << std::endl;
+		std::cout << "DOUBLE:  " << "-inf" << std::endl;
+	}
+	if (p == NAN)
+	{
+		std::cout << "INT:     " << "impossible." << std::endl;
+		std::cout << "CHAR:    " << "impossible." << std::endl;
+		std::cout << "FLOAT:   " << literal << "f" << std::endl;
+		std::cout << "DOUBLE:  " << literal << std::endl;
+	}
+	if (p == NANF)
+	{
+		std::cout << "INT:     " << "impossible." << std::endl;
+		std::cout << "CHAR:    " << "impossible." << std::endl;
+		std::cout << "FLOAT:   " << literal << std::endl;
+		std::cout << "DOUBLE:  " << "nan" << std::endl;
+	}
+}
+
 
 int ScalarConverter::convert(std::string literal)
 {
@@ -247,7 +299,7 @@ int ScalarConverter::convert(std::string literal)
 		lit = parseLiteral(literal, parser);
 
 	if (isAPseudoLit > -1)
-		std::cout<<"pseudo-lit"<<std::endl;
+		pseudoLit(literal, isAPseudoLit);
 	else if (lit > 0)
 	{
 		if (lit == CHAR)
