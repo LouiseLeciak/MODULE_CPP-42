@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:24:41 by lleciak           #+#    #+#             */
-/*   Updated: 2025/02/14 15:17:36 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:40:44 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int parseLiteral(std::string literal, const std::vector<std::string> parser){
 			}
 			i++;
 		} // clean, on regarde le dernier character
-		if (parser[1][i] == 'f' || parser[1][i] == 'F')
+		if (parser[1][i] == 'f' || parser[1][i] == 'F' || (parser[1].size() == 1 && (parser[1][0] == 'f' || parser[1][0] == 'F')))
 			return (FLOAT);
 		else if (parser[1][i] > 48 || parser[0][i] < 57)
 			return (DOUBLE);
@@ -130,31 +130,31 @@ int parseLiteral(std::string literal, const std::vector<std::string> parser){
 
 ///////////////////////////////////////////////convertion and cast/////////////////////////////
 
-void	charLit(std::string input, int fp_size)
+void	charLit(std::string input)
 {
 	char	c;
-	(void)fp_size;
 	c = input[1];
 
 	std::cout << "INPUT = CHAR\n" << std::endl; 
 	
 	std::cout << "INT:     " << static_cast<int>(c) << std::endl;
+	
 	if (static_cast<double>(c) < 0 || static_cast<double>(c) > 255)
 		std::cout << "CHAR:    " << "impossible." << std::endl;
 	else if (c < 32 || c > 126)	
 		std::cout << "CHAR:    " << "non displayable character." << std::endl;
 	else
 		std::cout << "CHAR:    " << "\'" << c << "\'" << std::endl;
-	std::cout.setf(std::ios::fixed);// flag for the 0.0f state
-	
-	std::cout << "FLOAT:   " << std::setprecision(7) << static_cast<float>(c) << "f" << std::endl;
-	std::cout << "DOUBLE:  " << std::setprecision(15) << static_cast<double>(c) << std::endl;
+	if (c < -std::numeric_limits<float>::max() || c > std::numeric_limits<float>::max())
+		std::cout << "FLOAT:   " << "impossible." << std::endl;
+	else
+		std::cout << "FLOAT:   " << static_cast<float>(c) << "f" << std::endl;
+	std::cout << "DOUBLE:  " << static_cast<double>(c) << std::endl;
 }
 
-void	intLit(std::string input, int fp_size)
+void	intLit(std::string input)
 {
 	long int	i;
-	(void)fp_size;
 
 	i = atof(input.c_str());
 	std::cout << "INPUT = INT\n" << std::endl; 
@@ -176,61 +176,63 @@ void	intLit(std::string input, int fp_size)
 	if (i < -std::numeric_limits<float>::max() || i > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
-		std::cout << "FLOAT:   " << std::setprecision(7) << static_cast<float>(i) << "f" << std::endl;
-	std::cout << "DOUBLE:  " << std::setprecision(15) << static_cast<double>(i) << std::endl;
+		std::cout << "FLOAT:   " << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "DOUBLE:  " << static_cast<double>(i) << std::endl;
 
 }
 
-void	floatLit(std::string input, int fp_size)
+void	floatLit(std::string input)
 {
 	float	f;
-	int		p;
 
 	f = atof(input.c_str());
 	std::cout << "INPUT = FLOAT\n" << std::endl; 
 
-
-	std::cout << "INT:     " << static_cast<int>(f) << std::endl;
+	if (f < -2147483648 || f > 2147483647)
+		std::cout << "INT:     " << "impossible." << std::endl;
+	else
+		std::cout << "INT:     " << static_cast<int>(f) << std::endl;
+	
 	if (f < 0 || f > 255)
 		std::cout << "CHAR:    " << "impossible." << std::endl;
 	else if (f < 32 || f > 126)	
 		std::cout << "CHAR:    " << "non displayable character." << std::endl;
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(f) << "\'" << std::endl;
-	std::cout.setf(std::ios::fixed);// flag for the 0.0f state
-	
-	p = 7 - fp_size;
-	if (p < 0)
-		std::cout << "FLOAT:   " << static_cast<float>(f) << "f" << std::endl;
-	else
-		std::cout << "FLOAT:   " << std::setprecision(p) << static_cast<float>(f) << "f" << std::endl;
 
-	p = 15 - fp_size;
-	if (p < 0)	
-		std::cout << "DOUBLE:  " << static_cast<double>(f) << std::endl;
+	if (f < -std::numeric_limits<float>::max() || f > std::numeric_limits<float>::max())
+		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
-		std::cout << "DOUBLE:  " << std::setprecision(p) << static_cast<double>(f) << std::endl;
+		std::cout << "FLOAT:   " << static_cast<float>(f) << "f" << std::endl;
+	
+	std::cout << "DOUBLE:  " << static_cast<double>(f) << std::endl;
 }
 
-void	doubleLit(std::string input, int fp_size)
+void	doubleLit(std::string input)
 {
 	double	d;
-	(void)fp_size;
 
 	std::cout << "INPUT = DOUBLE\n" << std::endl; 
 
 	d = atof(input.c_str());
+
+	if (d < -2147483648 || d > 2147483647)
+		std::cout << "INT:     " << "impossible." << std::endl;
+	else
+		std::cout << "INT:     " << static_cast<int>(d) << std::endl;
 	
-	std::cout << "INT:     " << static_cast<int>(d) << std::endl;
 	if (d < 0 || d > 255)
 		std::cout << "CHAR:    " << "impossible." << std::endl;
 	else if (d < 32 || d > 126)	
 		std::cout << "CHAR:    " << "non displayable character." << std::endl;
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(d) << "\'" << std::endl;
-	std::cout.setf(std::ios::fixed);// flag for the 0.0f state
-	std::cout << "FLOAT:   " << std::setprecision(7) << static_cast<float>(d) << "f"<< std::endl;
-	std::cout << "DOUBLE:  " << std::setprecision(15) << d << std::endl;
+		
+	if (d < -std::numeric_limits<float>::max() || d > std::numeric_limits<float>::max())
+		std::cout << "FLOAT:   " << "impossible." << std::endl;
+	else
+		std::cout << "FLOAT:   " << static_cast<float>(d) << "f"<< std::endl;
+	std::cout << "DOUBLE:  " << d << std::endl;
 }
 
 int ScalarConverter::convert(std::string literal)
@@ -249,13 +251,13 @@ int ScalarConverter::convert(std::string literal)
 	else if (lit > 0)
 	{
 		if (lit == CHAR)
-			charLit(literal, parser[0].size());
+			charLit(literal);
 		if (lit == INT)
-			intLit(literal, parser[0].size());
+			intLit(literal);
 		if (lit == FLOAT)
-			floatLit(literal, parser[0].size());
+			floatLit(literal);
 		if (lit == DOUBLE)
-			doubleLit(literal, parser[0].size());
+			doubleLit(literal);
 	}
 	
 	return (0);
