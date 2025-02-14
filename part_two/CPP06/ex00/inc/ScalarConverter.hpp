@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:22:22 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/20 12:17:05 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/02/13 13:40:57 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 # include <iostream>
 # include <string>
 
+#define CHAR 101
+#define INT 102
+#define FLOAT 103
+#define DOUBLE 104
+
 class ScalarConverter
 {
 	public:
 		~ScalarConverter();
-		static void convert(std::string literal);
-
+		static int convert(std::string literal);
 
 	private:
 		ScalarConverter();
