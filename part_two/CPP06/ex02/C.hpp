@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 08:40:25 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/23 08:40:26 by lleciak          ###   ########.fr       */
+/*   Created: 2024/12/23 08:40:46 by lleciak           #+#    #+#             */
+/*   Updated: 2025/02/19 13:03:53 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef C_HPP
+# define C_HPP
 
+# include "Base.hpp"
 
-#ifndef BASE_HPP
-# define BASE_HPP
+class Base;
 
-
-class Base {
-public:
-	virtual ~Base() {};
-};
-
-
+class C: public Base {};
 
 #endif

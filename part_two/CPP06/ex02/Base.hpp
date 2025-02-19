@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   A.hpp                                              :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 08:40:31 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/23 08:40:34 by lleciak          ###   ########.fr       */
+/*   Created: 2024/12/23 08:40:25 by lleciak           #+#    #+#             */
+/*   Updated: 2025/02/19 13:51:03 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_HPP
-# define A_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
-# include "Base.hpp"
 
-class Base;
-
-class A: public Base{
-	public:
-		virtual ~A(){};
+class Base {
+public:
+	virtual ~Base() {};
 };
 
-
+Base*	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);
 
 #endif

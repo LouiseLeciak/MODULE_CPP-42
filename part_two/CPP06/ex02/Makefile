@@ -6,7 +6,7 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 07:09:53 by lleciak           #+#    #+#              #
-#    Updated: 2024/12/18 09:15:52 by lleciak          ###   ########.fr        #
+#    Updated: 2025/02/19 13:57:22 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 
 NAME            = converter
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98
-FILES           = main.cpp
+FILES           = main.cpp Base.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f

@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 08:40:38 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/23 08:40:40 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/02/19 13:03:29 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 
 class Base;
 
-class B: public Base {
-	public:
-		~B(){};
-};
-
-
+class B: public Base {};
 
 #endif

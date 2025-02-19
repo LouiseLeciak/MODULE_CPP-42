@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   C.hpp                                              :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/23 08:40:46 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/23 08:40:51 by lleciak          ###   ########.fr       */
+/*   Created: 2024/12/23 08:40:31 by lleciak           #+#    #+#             */
+/*   Updated: 2025/02/19 13:03:42 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef C_HPP
-# define C_HPP
+#ifndef A_HPP
+# define A_HPP
 
 # include "Base.hpp"
 
 class Base;
 
-class C: public Base {
-	public:
-		~C(){};
-};
-
-
+class A: public Base{};
 
 #endif
