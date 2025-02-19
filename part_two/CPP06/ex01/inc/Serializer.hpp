@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:04:26 by lleciak           #+#    #+#             */
-/*   Updated: 2025/02/19 12:34:15 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/02/19 12:52:52 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define SERIALIZER_HPP
 
 #include <stdint.h>
-#include <iostream>
+#include <string>
 
 #include "Data.hpp"
 
