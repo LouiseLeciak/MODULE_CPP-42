@@ -6,14 +6,14 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 07:09:53 by lleciak           #+#    #+#              #
-#    Updated: 2025/02/25 13:22:24 by lleciak          ###   ########.fr        #
+#    Updated: 2025/03/04 13:55:33 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##########################################################
 #######ARGUMENTS
 
-NAME            = Bitcoin
+NAME            = btc
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98 -g3
 FILES           = main.cpp BitcoinExchange.cpp
 OBJECTS         = $(FILES:.cpp=.o)
