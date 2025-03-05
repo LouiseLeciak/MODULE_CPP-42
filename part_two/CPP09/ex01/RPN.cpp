@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:44:41 by lleciak           #+#    #+#             */
-/*   Updated: 2025/03/04 15:09:19 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/03/05 16:40:38 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,72 @@ int parseInput(std::string input){
 	return (0);
 }
 
+
+bool	isANb(char c){
+	if (c >= '0' && c <= '9')
+		return (true);
+	return (false);
+}
+
+bool	isAnOp(char c){
+	if (c == '+' || c == '-' || c == '*' || c == '/')
+		return (true);
+	return (false);
+}
+
+
+int	calcul(int a, int b, char op){
+	if (op == '+')
+		return (b + a);
+	if (op == '-')
+		return (b - a);
+	if (op == '*')
+		return (b * a);
+	if (op == '/'){
+		if (b == 0 || a == 0){
+			std::cerr << "Error: Impossible operation." << std::endl;
+			return (-1);
+		}
+		return (b / a);
+	}
+	else{
+		std::cout << "Error: Wrong operator." << std::endl;
+		return (-1);
+	}
+}
+
+// proteger si > 10
+// proteger si "1 +" " " "1 1" "1 + 1" 
 int	getNbStack(std::string input){
-	std::stack<char> calcul;
+	std::stack<int>		nb;
+	int					res;
+	int 				len = input.size();
+	int					i = 0;
+	
 	if (parseInput(input) == -1){
 		std::cerr << "invalid input" << std::endl;
 		return (-1);
 	}
+	while (i <= len){
+		if (input[i] == ' ' || input[i] == '\"'){
+			i++;	
+			continue;
+		}
+		else if (isANb(input[i]))
+			nb.push(input[i] - '0');
+		else if (isAnOp(input[i]) && !isAnOp(input[i + 1])){
+			int a = nb.top();
+			nb.pop();
+			int b = nb.top();
+			nb.pop();
+			res = calcul(a, b, input[i]);
+			if (res == -1)
+				return(-1);
+			nb.push(res);
+		}
+		i++;
+	}
+	std::cout << nb.top() << std::endl;
 	// proteger les divisions par 0
 	// proteger si + de deux chiffres avant l'operateur
 	return (0);
