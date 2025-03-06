@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:44:41 by lleciak           #+#    #+#             */
-/*   Updated: 2025/03/05 16:40:38 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:59:14 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int parseInput(std::string input){
 	int len = input.size();
 	while (i < len){
 		if (input[i] < '0' || input[i] > '9'){
-			if (input[i] != '+' && input[i] != '-' && input[i] != '*' && input[i] != '/' && input[i] != '\"' && input[i] != ' '){
+			if (input[i] != '+' && input[i] != '-' && input[i] != '*' && input[i] != '/' && input[i] != ' '){
 				return (-1);
 			}
 		}
+		else if (input[i] >= '0' && input[i] <= '9' && input[i + 1] != ' ')
+			return (-1);
 		i++;
 	}
 	return (0);
@@ -62,8 +64,7 @@ int	calcul(int a, int b, char op){
 	}
 }
 
-// proteger si > 10
-// proteger si "1 +" " " "1 1" "1 + 1" 
+
 int	getNbStack(std::string input){
 	std::stack<int>		nb;
 	int					res;
@@ -82,6 +83,10 @@ int	getNbStack(std::string input){
 		else if (isANb(input[i]))
 			nb.push(input[i] - '0');
 		else if (isAnOp(input[i]) && !isAnOp(input[i + 1])){
+			if (nb.size() < 2){
+				std::cerr << "invalid input" << std::endl;
+				return (-1);
+			}
 			int a = nb.top();
 			nb.pop();
 			int b = nb.top();
