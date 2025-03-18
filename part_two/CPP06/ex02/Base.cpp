@@ -44,14 +44,26 @@ void	identify(Base* p)
 	std::cout << "Identification: ";
 
 	if (A* test = dynamic_cast<A*>(p)){
+		if (test == NULL){
+			std::cerr << "cast error." << std::endl;
+			return;
+		}
 		(void)test;
 		std::cout << "A" << std::endl;
 	}
 	else if (B* test = dynamic_cast<B*>(p)){
+		if (test == NULL){
+			std::cerr << "cast error." << std::endl;
+			return;
+		}
 		(void)test;	
 		std::cout << "B" << std::endl;
 	}
 	else if (C* test = dynamic_cast<C*>(p)){
+		if (test == NULL){
+			std::cerr << "cast error." << std::endl;
+			return;
+		}
 		(void)test;
 		std::cout << "C" << std::endl;
 	}
@@ -66,15 +78,18 @@ void	identify(Base& p)
     	A& test = dynamic_cast<A &>(p);
 		(void)test;
 		std::cout << "A" << std::endl;
-	} catch(const std::exception &e) {}
+	} 
+	catch(const std::exception &e) {}
 	try {
     	B& test = dynamic_cast<B &>(p);
 		(void)test;
 		std::cout << "B" << std::endl;
-	} catch(const std::exception &e) {}
+	} 
+	catch(const std::exception &e) {}
 	try {
     	C& test = dynamic_cast<C &>(p);
 		(void)test;
 		std::cout << "C" << std::endl;
-	} catch(const std::exception &e) {}
+	} 
+	catch(const std::exception &e) {}
 };

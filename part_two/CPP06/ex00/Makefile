@@ -15,7 +15,7 @@
 
 NAME            = converter
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98
-FILES           = src/main.cpp src/ScalarConverter.cpp
+FILES           = main.cpp ScalarConverter.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f

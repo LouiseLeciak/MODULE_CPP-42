@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Serializer.hpp"
-#include "../inc/Data.hpp"
+#include "Serializer.hpp"
+#include "Data.hpp"
+#include <iostream>
 
 int main(void){
     uintptr_t   raw;
@@ -23,17 +24,17 @@ int main(void){
 	data.c = ')';
 	data.str  = "Hello world !";
 
-	// std::cout << "data.i: " << data.i << std::endl;
-	// std::cout << "data.c: " << data.c << std::endl;
-	// std::cout << "data.str: " << data.str << "\n\n" << std::endl;
+	std::cout << "data.i: " << data.i << std::endl;
+	std::cout << "data.c: " << data.c << std::endl;
+	std::cout << "data.str: " << data.str << "\n\n" << std::endl;
 
 
 	raw = Serializer::serialize(&data);
 	ptr = Serializer::deserialize(raw);
 
-	// std::cout << "data.i: " << data.i << std::endl;
-	// std::cout << "data.c: " << data.c << std::endl;
-	// std::cout << "data.str: " << data.str << std::endl;
+	std::cout << "data.i: " << data.i << std::endl;
+	std::cout << "data.c: " << data.c << std::endl;
+	std::cout << "data.str: " << data.str << std::endl;
 	std::cout << "ptr: " << ptr << std::endl;
 
 }

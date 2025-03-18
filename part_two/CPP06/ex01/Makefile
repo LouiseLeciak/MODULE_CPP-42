@@ -15,7 +15,7 @@
 
 NAME            = serializer
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98
-FILES           = src/main.cpp src/Serializer.cpp
+FILES           = main.cpp Serializer.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f

@@ -15,7 +15,7 @@
 #include <vector>
 #include <sstream>
 #include <iomanip>
-#include "../inc/ScalarConverter.hpp"
+#include "ScalarConverter.hpp"
 
 
 ScalarConverter::ScalarConverter(){};
@@ -191,7 +191,7 @@ void	floatLit(std::string input)
 	f = atof(input.c_str());
 	std::cout << "INPUT = FLOAT\n" << std::endl; 
 
-	if (f < -2147483648 || f > 2147483647)
+	if (f < -2147483648.f || f > 2147483647.f)
 		std::cout << "INT:     " << "impossible." << std::endl;
 	else
 		std::cout << "INT:     " << static_cast<int>(f) << std::endl;

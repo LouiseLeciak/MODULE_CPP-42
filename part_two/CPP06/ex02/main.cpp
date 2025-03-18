@@ -12,8 +12,11 @@
 
 #include "Base.hpp"
 
-int main(void)
+int main(int ac, char *av[])
 {
+	if (ac != 1)
+		return(-1);
+	(void)av;
 	identify(generate());
 	identify(*generate());
 	return (0);
