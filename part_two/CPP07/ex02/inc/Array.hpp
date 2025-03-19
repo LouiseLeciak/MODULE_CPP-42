@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:08:12 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/18 12:27:09 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/03/19 14:40:21 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,18 @@ template <typename T>
 class Array
 {
     public:
-        Array(): _size(0), _array(size){};
-        Array(unsigned int n): _size(n), _array(new T[n]){};
+        Array(): _size(0), _array(_size){};
+        Array(unsigned int n){
+			_size = n;
+			_array = new T[_size];
+			for (unsigned int i = 0; i < _size; i++){
+				_array[i] = T();
+			}};
         ~Array(){delete[] this->_array;};
 		unsigned int size() const {return(this->_size);};
         Array(const Array& copy)
 		{
+			delete[] _array;
 			this->_array = NULL;
 			*this = copy;
 		};
@@ -41,7 +47,7 @@ class Array
 		};
         T &operator[](unsigned int i)
 		{
-			if (i < 0 || i >= this->_size)
+			if (i >= this->_size)
 				throw OutOfBoundException();
 			return (this->_array[i]);
 		};

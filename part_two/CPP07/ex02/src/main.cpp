@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:24:41 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/18 12:34:30 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/03/19 14:34:16 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int main(void)
 		intArray[0] = 2;
 		std::cout << intArray[0] << std::endl;
 		std::cout << intArray[1] << std::endl;
-		std::cout << intArray[4] << std::endl;
+
+		// std::cout << "Test exception" << std::endl;
+		// std::cout << intArray[4] << std::endl;
 
 	}
 	catch(const std::exception& e)
