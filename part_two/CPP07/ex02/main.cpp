@@ -36,7 +36,6 @@ int main(void)
 
 		std::cout << "Test exception" << std::endl;
 		std::cout << intArray[4] << std::endl;
-
 	}
 	catch(const std::exception& e)
 	{
