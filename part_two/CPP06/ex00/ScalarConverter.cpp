@@ -24,10 +24,12 @@ ScalarConverter::ScalarConverter(const ScalarConverter& copy)
 {
 	(void)copy;
 }
-// ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy)
-// {
-// 	(void)copy;
-// }
+
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy)
+{
+	(void)copy;
+	return (*this);
+}
 
 ScalarConverter::~ScalarConverter(){};
 
@@ -71,15 +73,15 @@ int parseLiteral(std::string literal, const std::vector<std::string> parser){
 		i++;
 	}
 
-	if (parser.size() > 2){ // si plusieurs . mauvais input
+	if (parser.size() > 2){
 		return (-1);
 	}
-	else if (parser.size() == 1){ // si pas de .
-		if (parser[0].size() == 3 && literal[0] == '\'' && literal[2] == '\''){ // si 3 de len et entre ' ' 
+	else if (parser.size() == 1){
+		if (parser[0].size() == 3 && literal[0] == '\'' && literal[2] == '\''){
 			return (CHAR);}
-		while (parser[0][i] && isAChar == 0){ // on se balade dans la string voir si il n'y a bien que des num
+		while (parser[0][i] && isAChar == 0){
 			if (parser[0][i] < 48 || parser[0][i] > 57){
-				std::cerr << "Not a numeric input" << std::endl;
+				std::cout << "Not a numeric input" << std::endl;
 				return (-1);
 			}
 			i++;
@@ -94,7 +96,7 @@ int parseLiteral(std::string literal, const std::vector<std::string> parser){
 		}
 	}
 	else if (parser.size() == 2){
-		i = 0; // si 2 parties, on verifie que les 2 sont clean, si oui on check s'il y a un f a la fin
+		i = 0;
 		if (negative == 1){
 			i++;
 		}
@@ -103,7 +105,7 @@ int parseLiteral(std::string literal, const std::vector<std::string> parser){
 				return (-1);
 			}
 			i++;
-		} // premiere partie clean
+		}
 		i = 0;
 		int j = parser[1].size();
 		while (parser[1][i]){
@@ -112,11 +114,11 @@ int parseLiteral(std::string literal, const std::vector<std::string> parser){
 				break;
 			}
 			if (parser[1][i] < 48 || parser[0][i] > 57){
-				std::cerr << "Not a numeric input" << std::endl;
+				std::cout << "Not a numeric input" << std::endl;
 				return (-1);
 			}
 			i++;
-		} // clean, on regarde le dernier character
+		}
 		if (parser[1][i] == 'f' || parser[1][i] == 'F' || (parser[1].size() == 1 && (parser[1][0] == 'f' || parser[1][0] == 'F')))
 			return (FLOAT);
 		else if (parser[1][i] > 48 || parser[0][i] < 57)
@@ -172,10 +174,7 @@ void	intLit(std::string input)
 		std::cout << "CHAR:    " << "non displayable character." << std::endl;
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(i) << "\'" << std::endl;
-		
-	std::cout.setf(std::ios::fixed);// flag for the 0.0f state
-	
-	std::cout.setf(std::ios::fixed);
+	//std::cout.setf(std::ios::fixed);
 	if (i < -std::numeric_limits<float>::max() || i > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
@@ -203,7 +202,7 @@ void	floatLit(std::string input)
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(f) << "\'" << std::endl;
 
-	std::cout.setf(std::ios::fixed);
+	//std::cout.setf(std::ios::fixed);
 	if (f < -std::numeric_limits<float>::max() || f > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else
@@ -232,7 +231,7 @@ void	doubleLit(std::string input)
 	else
 		std::cout << "CHAR:    " << "\'" << static_cast<char>(d) << "\'" << std::endl;
 		
-	std::cout.setf(std::ios::fixed);
+	//std::cout.setf(std::ios::fixed);
 	if (d < -std::numeric_limits<float>::max() || d > std::numeric_limits<float>::max())
 		std::cout << "FLOAT:   " << "impossible." << std::endl;
 	else

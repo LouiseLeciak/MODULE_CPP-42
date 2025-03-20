@@ -15,7 +15,7 @@
 
 int	main(int ac, char *av[]){
 	if (ac != 2){
-		std::cerr << "invalid parametres" << std::endl;
+		std::cout << "invalid parametres" << std::endl;
 	}
 	getNbStack(av[1]);
 }

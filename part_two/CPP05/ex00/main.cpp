@@ -36,10 +36,6 @@ int main()
 		std::cout << "\033[0;35m\nWITH ERROR\033[0m\n" << std::endl;
 		//Bureaucrat Jim("Jim", 167);
 		//Bureaucrat Michael("Michael", 0);
-		Bureaucrat Jim("Jim", 1);
-		
-		Jim.decrementGrade();
-		
 		
 	} 
 	catch (std::exception &e)

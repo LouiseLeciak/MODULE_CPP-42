@@ -53,7 +53,7 @@ int	calcul(int a, int b, char op){
 		return (b * a);
 	if (op == '/'){
 		if (b == 0 || a == 0){
-			std::cerr << "Error: Impossible operation." << std::endl;
+			std::cout << "Error: Impossible operation." << std::endl;
 			return (-1);
 		}
 		return (b / a);
@@ -72,7 +72,7 @@ int	getNbStack(std::string input){
 	int					i = 0;
 	
 	if (parseInput(input) == -1){
-		std::cerr << "invalid input" << std::endl;
+		std::cout << "invalid input" << std::endl;
 		return (-1);
 	}
 	while (i <= len){
@@ -84,7 +84,7 @@ int	getNbStack(std::string input){
 			nb.push(input[i] - '0');
 		else if (isAnOp(input[i]) && !isAnOp(input[i + 1])){
 			if (nb.size() < 2){
-				std::cerr << "invalid input" << std::endl;
+				std::cout << "invalid input" << std::endl;
 				return (-1);
 			}
 			int a = nb.top();

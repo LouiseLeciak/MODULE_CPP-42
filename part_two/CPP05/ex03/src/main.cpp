@@ -36,6 +36,7 @@ int main()
 			
 		std::cout << "\n\n";	
 		
+		delete homemadeForm;
 		homemadeForm = Bill.makeForm("robotomy request", "random robot");
 		if (!homemadeForm)
 		{
@@ -47,6 +48,7 @@ int main()
 
 		std::cout << "\n\n";	
 		
+		delete homemadeForm;
 		homemadeForm = Bill.makeForm("presidential pardon", "bibo");
 		if (!homemadeForm)
 		{
@@ -58,6 +60,7 @@ int main()
 		
 		std::cout << "\n\n";	
 		
+		delete homemadeForm;
 		homemadeForm = Bill.makeForm("dance form", "dancing queen");
 		if (!homemadeForm)
 		{
@@ -67,7 +70,7 @@ int main()
 		Michael.signForm(*homemadeForm);
 		Michael.executeForm(*homemadeForm);
 
-
+		delete homemadeForm;
 	} 
 	catch (std::exception &e)
 	{

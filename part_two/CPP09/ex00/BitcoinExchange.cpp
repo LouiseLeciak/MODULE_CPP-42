@@ -38,7 +38,7 @@ std::map<std::string, long double>store_data()
     
     infile.is_open();
 	if (!infile.is_open()){
-		std::cerr << "error opening file." << std::endl;
+		std::cout << "error opening file." << std::endl;
 	}
 	while (std::getline(infile, line, '\n')){
         data[line.substr(0, line.find(","))] = my_strtold(line.substr(line.find(",") + 1, std::string::npos));
@@ -97,7 +97,7 @@ void	get_result(std::map<std::string, long double> data, char *text){
 
     demand.is_open();
 	if (!demand.is_open()){
-		std::cerr << "error opening file." << std::endl;}
+		std::cout << "error opening file." << std::endl;}
     std::cout << "date | value" << std::endl;
     while (demand.good())
     {

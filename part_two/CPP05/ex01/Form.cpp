@@ -21,7 +21,7 @@ Form::Form(): _name("Default"), _signed("false"), _signGrade(150), _execGrade(15
 Form::Form(const std::string name, int signGrade, int execGrade):
 _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
-	std::cout << "Form: Constructor called\n" << std::endl;
+	//std::cout << "Form: Constructor called\n" << std::endl;
 	if (signGrade > 150 || execGrade > 150)
 		throw Form::GradeTooLowException();
 	else if (signGrade < 1 || execGrade < 1)
@@ -32,7 +32,7 @@ _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 Form::Form(const Form& copy):
 _name(copy._name), _signed(copy._signed), _signGrade(copy._signGrade), _execGrade(copy._execGrade)
 {
-	std::cout << "Form: Copy constructor called" << std::endl;
+	//std::cout << "Form: Copy constructor called" << std::endl;
 	(*this) = copy;
 }
 
@@ -42,7 +42,7 @@ _name(copy._name), _signed(copy._signed), _signGrade(copy._signGrade), _execGrad
 
 Form& Form::operator=(const Form& copy)
 {
-	std::cout << "Form: Copy assignement operator called" << std::endl;
+	//std::cout << "Form: Copy assignement operator called" << std::endl;
 	this->_signed = copy._signed;
 	return (*this);
 }
@@ -64,7 +64,7 @@ std::ostream& operator<<(std::ostream& os, const Form& form)
 
 Form::~Form()
 {
-	std::cout << "\nForm: Destructor called" << std::endl;
+	//std::cout << "\nForm: Destructor called" << std::endl;
 	return;
 }
 

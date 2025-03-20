@@ -45,7 +45,7 @@ void	identify(Base* p)
 
 	if (A* test = dynamic_cast<A*>(p)){
 		if (test == NULL){
-			std::cerr << "cast error." << std::endl;
+			std::cout << "cast error." << std::endl;
 			return;
 		}
 		(void)test;
@@ -53,7 +53,7 @@ void	identify(Base* p)
 	}
 	else if (B* test = dynamic_cast<B*>(p)){
 		if (test == NULL){
-			std::cerr << "cast error." << std::endl;
+			std::cout << "cast error." << std::endl;
 			return;
 		}
 		(void)test;	
@@ -61,7 +61,7 @@ void	identify(Base* p)
 	}
 	else if (C* test = dynamic_cast<C*>(p)){
 		if (test == NULL){
-			std::cerr << "cast error." << std::endl;
+			std::cout << "cast error." << std::endl;
 			return;
 		}
 		(void)test;
