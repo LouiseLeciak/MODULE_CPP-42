@@ -12,33 +12,35 @@
 
 #include <iostream>
 #include <cstdlib> 
-#include "../inc/Array.hpp"
+#include "Array.hpp"
 
 
 int main(void)
 {
 	try
 	{
-		std::cout << "STRING ARRAY" << std::endl;
+		std::cout << "STRING ARRAY\n" << std::endl;
 		
 		Array<std::string> strArray(3);
 		strArray[1] = "Youpi";
-		std::cout << strArray[1] << std::endl;
+		std::cout << strArray[1] << "\n\n" << std::endl;
 
-		std::cout << "INT ARRAY" << std::endl;
+		std::cout << "INT ARRAY\n" << std::endl;
 
 		Array<int> intArray(3);
 		intArray[0] = 2;
+		intArray[2] = 2;
 		std::cout << intArray[0] << std::endl;
 		std::cout << intArray[1] << std::endl;
+		std::cout << intArray[2] << std::endl;
 
-		// std::cout << "Test exception" << std::endl;
-		// std::cout << intArray[4] << std::endl;
+		std::cout << "Test exception" << std::endl;
+		std::cout << intArray[4] << std::endl;
 
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 }
 

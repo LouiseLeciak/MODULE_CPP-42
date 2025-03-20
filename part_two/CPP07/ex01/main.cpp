@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../inc/iter.hpp"
+#include "iter.hpp"
 
 void	print(const std::string &str){
 	std::cout << str << std::endl;
