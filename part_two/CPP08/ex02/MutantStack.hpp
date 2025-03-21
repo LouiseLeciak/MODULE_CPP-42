@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 13:32:53 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/20 08:47:13 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/03/21 09:06:00 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ class MutantStack: public std::stack<T>
         ~MutantStack(){};
         MutantStack& operator=(MutantStack& copy)
 		{
-			*this = copy;
-			return (*this);
+			if (this != &copy)
+                std::stack<T>::operator=(copy);
+            return (*this);
 		};
         typedef typename std::stack<T>::container_type::iterator iterator;
 

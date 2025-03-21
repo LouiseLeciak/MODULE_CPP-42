@@ -15,7 +15,7 @@
 
 NAME            = Mutant
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98
-FILES           = src/main.cpp
+FILES           = main.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f
