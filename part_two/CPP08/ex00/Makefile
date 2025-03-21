@@ -15,7 +15,7 @@
 
 NAME            = easyfind
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98 -g3
-FILES           = src/main.cpp
+FILES           = main.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f
