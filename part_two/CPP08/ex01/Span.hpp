@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 08:22:53 by lleciak           #+#    #+#             */
-/*   Updated: 2024/12/19 12:33:44 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/03/21 08:20:13 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,19 @@ class Span
         typedef std::vector<int>::iterator iter;
         std::vector<int> _tab;
     public:
-        Span();
-        Span(unsigned int N);
-        ~Span();
-        //Span(Span &copy);
-        Span &operator=(Span &copy);
-
-        void            addNumber(int nb);
-		void	        addSeveralNumbers(iter first, iter last);
-        unsigned int    shortestSpan()const;
-        unsigned int    longestSpan()const;
-
-        
-        class ContainerFullException: public std::exception{
-            public: virtual const char* what() const throw(){return("Exception: container full.");}
+    Span();
+    Span(unsigned int N);
+    ~Span();
+    Span &operator=(Span &copy);
+    
+    void            addNumber(int nb);
+    void	        addSeveralNumbers(iter first, iter last);
+    unsigned int    shortestSpan()const;
+    unsigned int    longestSpan()const;
+    
+    
+    class ContainerFullException: public std::exception{
+        public: virtual const char* what() const throw(){return("Exception: container full.");}
         };
 
         class NoDistanceException: public std::exception{
