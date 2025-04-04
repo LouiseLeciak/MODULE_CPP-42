@@ -6,38 +6,41 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:23:01 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 20:35:31 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/05 00:15:28 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PMergeMe.hpp"
+#include <algorithm>
 
 
 // inserer les pendings dans le main avec un binary search;
-std::vector<long unsigned int> insert(std::vector<long unsigned int> main, std::vector<IntPair> pending){
+std::vector<IntPair> insert(std::vector<IntPair> main, std::vector<IntPair> pending){
 
 	for (long unsigned int i = 0; i < pending.size(); i++){
-		long unsigned int current = pending[i].value;// objet qu'on test, savoir ou on le met
+		IntPair current = pending[i];// objet qu'on test, savoir ou on le met
 		long unsigned int high = main.size(); // aller au milieu du tableau
 		long unsigned int  low = 0;
 		long unsigned int  mid = 0;
+		
 		while (low <= high) {
+
         	mid = low + (high - low) / 2;
-			if (mid == main.size() - 1 && current > main[main.size() - 1]){
+			if (mid == main.size() - 1 && current.value > main[main.size() - 1].value){
 				mid++;
 				break;
 			}
 			if (mid == 0){
-				if (current < main[0])
+				if (current.value < main[0].value)
 					break;
 				mid++;
 			}
-			if ((current > main[mid - 1] && current < main[mid]))
+			if ((current.value > main[mid - 1].value && current.value < main[mid].value))
 				break;
-			if (current > main[mid])
-				low = mid;
-			if (current < main[mid])
-				high = mid;
+			if (current.value > main[mid].value)
+				low = mid + 1;
+			if (current.value < main[mid].value)
+				high = mid - 1;
 
     	}
 		//main.insert(position, quoi);
@@ -48,7 +51,7 @@ std::vector<long unsigned int> insert(std::vector<long unsigned int> main, std::
 
 
 // trier pending dans l'order jacob + index
-std::vector<IntPair> pendingManagement(std::vector<long unsigned int> pending){
+std::vector<IntPair> pendingManagement(std::vector<IntPair> pending){
 	std::vector<long unsigned int> Jacobsthal;
 	long unsigned int j = 1;
 	long unsigned int prec = 1;
@@ -81,7 +84,7 @@ std::vector<IntPair> pendingManagement(std::vector<long unsigned int> pending){
 			continue;	
 		}
 		
-		pendingFinal.push_back(IntPair(pending[index - 1], index - 1)); // pendingcopy c'est les pending range en combinaison de jacob + index
+		pendingFinal.push_back(IntPair(pending[index - 1].value, pending[index - 1].index)); // pendingcopy c'est les pending range en combinaison de jacob + index
 	}
 	return (pendingFinal);
 }
@@ -89,77 +92,84 @@ std::vector<IntPair> pendingManagement(std::vector<long unsigned int> pending){
 
 
 // sort l'input selon l'algo de Ford Johnson
-std::vector<IntPair> sort(std::vector<long unsigned int> input){
-	if (input.size() <= 2){ //sort pour 2 
-		std::vector<IntPair> pair;
-		pair.push_back(IntPair(input[0], 0));
-		if (input.size() == 1)
-			return (pair);
-		pair.push_back(IntPair(input[1], 1));
-		if (input[0] > input[1]){
-			std::vector<IntPair> tmp;
-			tmp.push_back(pair[1]);
-			pair[1] = pair[0];
-			pair[0] = tmp[0];
+// on ne fait pas de copie, on trafic input directement => donc void
+void sort(std::vector<IntPair>& input){
+	if (input.size() == 2){ //sort pour 2 
+		if (input[0].value > input[1].value){
+			std::swap(input[0], input[1]);
 		}
-		return (pair);
+		return;
 	}
 
-	std::vector<long unsigned int> main;
-	std::vector<long unsigned int> pending;
-	std::vector<IntPair> sorted;
+	if(input.size() == 1){
+		return;
+	}
+
+	std::vector<IntPair> main;
+	std::vector<IntPair> pending;
+	int iterator = 0;
+	
 	// ranger les main et les pending
 	if (input.size() % 2 == 1){ // si un nombre impaire d'input donc un boloss
 		for (long unsigned int i = 0; i < input.size() - 1; i++){
 			if (i % 2 == 1)
-				pending.push_back(input[i]);
+				pending.push_back(IntPair(input[i].value, input[i].index));
 			else
-				main.push_back(input[i]);
+				main.push_back(IntPair(input[i].value, iterator++));
 		}
-		pending.push_back(input.back());
+		pending.push_back(IntPair(input.back().value, input.back().index));
 	}
 	else{ // nombre pair d'input
 		for (long unsigned int i = 0; i < input.size(); i++){
 			if (i % 2 == 1)
-				pending.push_back(input[i]);
+				pending.push_back(IntPair(input[i].value, input[i].index));
 			else
-				main.push_back(input[i]);
+				main.push_back(IntPair(input[i].value, iterator++));
 		}
 	}
 
 	for (long unsigned int i = 0; i < main.size(); i++){
-		if (pending[i] > main[i]){// sort IN PAIRS
+		if (pending[i].value > main[i].value){// sort IN PAIRS
 			// std::vector<int> tmp;
 			// tmp.push_back(pending[i]);
-			int tmp = pending[i];
-			pending[i] = main[i];
-			main[i] = tmp;
+			int tmp = pending[i].value;
+			pending[i].value = main[i].value;
+			pending[i].index = input[i*2].index;// i * 2 parce que les pendings = 1 sur 2 dans la chaine principale d'input
+			main[i].value = tmp;
 		}
 	}
-
-	sorted = sort(main);
-	// we organize pending like we did with main
-	std::vector<long unsigned int> copyPending = pending;
+	sort(main);
 	
+	// we organize pending like we did with main
+	std::vector<IntPair> copyPending = pending;
+	
+		
 	for(long unsigned int i = 0; i < main.size(); i++){
-		main[i] = sorted[i].value;
-		pending[i] = copyPending[sorted[i].index];
+		pending[i] = copyPending[main[i].index];
 	}
 
+	// pour chaque main on va chercher dans input l'index original
+	for(unsigned long int i = 0; i < main.size(); i ++)
+	{
+		for (unsigned long int j = 0; j<input.size(); j++)
+		{
+			if(input[j].value == main[i].value)
+				main[i].index = input[j].index;
+		}
+	}
 	
 	//pending.erase(pending.begin()); // On passe le premier pendind devant le premier main car il est forcement + petit
 
 	
 	//ATTENTION PENDING [0] AU DEBUT DE MAIN ET DFIN DE PENDING
-	main.insert(main.begin(), pending[0]); // insert the little of the first duo because we know it's smaller than all the main
+	main.insert(main.begin(), IntPair(pending[0])); // insert the little of the first duo because we know it's smaller than all the main
 
 	
 	std::vector<IntPair> newPending = pendingManagement(pending);
-	
+
 	main = insert(main, newPending);
-	std::vector<IntPair> final;
-	for (long unsigned int i = 0; i < main.size(); i++){
-		final.push_back(IntPair(main[i], i));
-	}
-	return (final);
+	
+	// on modifie input car c'est une reference
+	for (long unsigned int i = 0; i < main.size(); i++)
+		input[i]= main[i];
 }
