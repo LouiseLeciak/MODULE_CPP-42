@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 13:50:29 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:53:23 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,22 @@ int main(int ac, char *av[]){
 		std::cout << "Double not allowed." << std::endl;
 		return (-1);
 	}
-	// std::vector<IntPair> sorted = sort(input);
+	
+	std::vector<IntPair> sorted = sort(input);
 
-	// // time management
-	// struct timeval tv1, tv2;
-	// gettimeofday(&tv1, NULL);
-	// gettimeofday(&tv2, NULL);
-	// double time1 = (double) (tv2.tv_sec - tv1.tv_sec);
-	// time1 = (double) ((time1 * 1000000) + (tv2.tv_usec - tv1.tv_usec));
-	// std::cout << "Time to process a range of " << sorted.size() << " elements";
-	// std::cout << " with std::vector :  " << time1 << " us" << std::endl;
+	// time management
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+	gettimeofday(&tv2, NULL);
+	double time1 = (double) (tv2.tv_sec - tv1.tv_sec);
+	time1 = (double) ((time1 * 1000000) + (tv2.tv_usec - tv1.tv_usec));
+	std::cout << "Time to process a range of " << sorted.size() << " elements";
+	std::cout << " with std::vector :  " << time1 << " us" << std::endl;
 
 	
-	// //print juste le vector sorted
-	// for (unsigned long i = 0; i < sorted.size(); i++)
-	// 	std::cout << sorted[i].value << " ";
-	// std::cout << std::endl;
-	// return(0);
+	//print juste le vector sorted
+	for (unsigned long i = 0; i < sorted.size(); i++)
+		std::cout << sorted[i].value << " ";
+	std::cout << std::endl;
+	return(0);
 }

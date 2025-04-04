@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:03 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 13:24:32 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:02:56 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class IntPair
 
 std::vector<int> insert(std::vector<int> main, std::vector<IntPair> pending);
 std::vector<IntPair> pendingManagement(std::vector<int> pending);
-std::vector<IntPair> sort(std::vector<int> input);
+std::vector<IntPair> sort(std::vector<long unsigned int> input);
 
 
 
