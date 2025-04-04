@@ -6,109 +6,70 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/03 15:00:55 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 13:50:29 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PMergeMe.hpp"
-#include <vector>
-#include <iostream>
+#include <cstdlib>
 
 // parser de l'input, que des chiffres, pas de doublon, si doublon = erreur
-
-
-// inserer les pendings dans le main avec un binary search;
-std::vector<int> insert(std::vector<int> main, std::vector<IntPair> pending){
-	for (int i = 0; i <= pending.size(); i++){
-		int current = pending[i].value;// objet qu'on test, savoir ou on le met
-		int j = pending[i].index / 2; // aller au milieu du tableau   	KOI SI TABLEAU = 1
-		while (current < main[j - 1] || current > main[j]){
-			if (current > main[j]) // euh pas sur mais un peu mieux que lautre
-				j = (pending[i].index - j) / 2;
-			else if (current < main[j])// euh pas sur
-				j -= (j / 2);
+int	parseInput(int ac, char *av[]){
+	if (ac == 1) // si pas de num
+		return (-1);
+	for (int i = 1; av[i]; i++){
+		for (int j = 0; av[i][j]; j++){
+			if (av[i][j] < 48 || av[i][j] > 57)
+				return (-1);
 		}
-		//main.insert(j, current);
 	}
-	return (main);
+	return (1);
 }
 
-
-// trier pending dans l'order jacob + index
-std::vector<IntPair> pendingManagement(std::vector<int> pending){
-	std::vector<int> Jacobsthal;
-	int j = 1;
-	int prec = 1;
-	for (int i = 0; j <= pending.size(); i++){
-		int temp;
-		Jacobsthal.push_back(j);
-		temp = j;
-		// j + precedent jacobcaca;
-		// prec = j;
-	}
-	// apres ce for on a un vector remplis avec la suite de jacob dont on a besoin
-	std::vector<IntPair> pendingFinal;
-	int jacobPrecIt = 0;// precedent jacob
-	int	jacobIt = 1;//iterator jacob
-	int	comp = 0;
-	for (int i = 1; i<pending.size(); i++){
-		int index = Jacobsthal[jacobIt] - comp++;
-		if (index <= Jacobsthal[jacobPrecIt]){ // si on arrive a 11, pour faire tt ceux qui manque 9,8,7,6,5..
-			index = Jacobsthal[++jacobIt];
-			comp = 0;	
+int	checkDouble(std::vector<long unsigned int> input){
+	std::vector<long unsigned int> tmp = input;
+	for(long unsigned int i = 0; i < input.size(); i++){
+		for (long unsigned int j = 0; j < tmp.size(); j++){
+			if (i != j && input[i] == tmp[j])
+				return (-1);
 		}
-		pendingFinal.push_back(IntPair(pending[Jacobsthal[index]], index)); // pendingcopy c'est les pending range en combinaison de jacob + index
 	}
-	return (pendingFinal);
+	return (0);
 }
 
-// sort l'input selon l'algo de Ford Johnson
-std::vector<IntPair> sort(std::vector<int> input){
-	if (input.size() <= 2){ //sort pour 2 
-		std::vector<IntPair> pair;
-		pair[0].value = input[0];
-		pair[0].index = 0;
-		pair[1].value = input[1];
-		pair[1].index = 1;
-		if (input[0] > input[1])
-			swap pair[1] = pair [0];
-		return (pair);
-		std:: << "c'est trie" << std::endl;
-	}
-	std::vector<int> main;
-	std::vector<int> pending;
-	std::vector<IntPair> sorted;
-	// main = 1 et a chaque fois + 2;
-	// pending = %2 = 0 et le dernier si impaire;
-	// 201
-	for (int i = 0; i < main.size(); i++){
-		if (pending[i] > main[i])
-			swap(pd, main);// on trie DANS les pairs
-	}
-	sorted = sort(main);
-	std::vector<int> copyPending = pending;
-	for(int i = 0; i <= main.size(); i++;){
-		main[i] = sorted[i].value;
-		pending[i] = copyPending[sorted[i].index]; // on reorganise pending comme on a organise main;
-	}
-	//pending.erase(pending[0]); // On passe le premier pendind devant le premier main car il est forcement + petit
-	//ATTENTION PENDING [0] AU DEBUT DE MAIN ET DFIN DE PENDING
-	main.pushdevant(pending[0]);
-	std::vector<IntPair> newPending = pendingManagement(pending);
-	main = insert(main, newPending);
-	std::vector<IntPair> final;
-	for (int i = 0; i < main.size(); i++){
-		final.push_back(IntPair(main[i], i));
-	}
-	return (final);
-}
 
 int main(int ac, char *av[]){
-	if (ac < 2)
-		return 0;
+	if (parseInput(ac, av) == -1){
+		std::cout << "Invalid input." << std::endl;
+		return (-1);
+	}
 	if (ac == 2){
 		std::cout << av[1] << std::endl;
 	}
-	// vector input = les inputs passe avec atoi
-	//sort(input);
+	
+	std::vector<long unsigned int> input;
+	for (int i = 1; av[i]; i++){
+		input.push_back(std::atoi(av[i]));
+	}
+	if (checkDouble(input) == -1){
+		std::cout << "Double not allowed." << std::endl;
+		return (-1);
+	}
+	// std::vector<IntPair> sorted = sort(input);
+
+	// // time management
+	// struct timeval tv1, tv2;
+	// gettimeofday(&tv1, NULL);
+	// gettimeofday(&tv2, NULL);
+	// double time1 = (double) (tv2.tv_sec - tv1.tv_sec);
+	// time1 = (double) ((time1 * 1000000) + (tv2.tv_usec - tv1.tv_usec));
+	// std::cout << "Time to process a range of " << sorted.size() << " elements";
+	// std::cout << " with std::vector :  " << time1 << " us" << std::endl;
+
+	
+	// //print juste le vector sorted
+	// for (unsigned long i = 0; i < sorted.size(); i++)
+	// 	std::cout << sorted[i].value << " ";
+	// std::cout << std::endl;
+	// return(0);
 }
