@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:23:01 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 14:26:15 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 15:09:11 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@ std::vector<IntPair> sort(std::vector<long unsigned int> input){
 		std::vector<IntPair> pair;
 		pair.push_back(IntPair(input[0], 0));
 		pair.push_back(IntPair(input[1], 1));
-
-		// pair[0].value = input[0];
-		// pair[0].index = 0;
-		// pair[1].value = input[1];
-		// pair[1].index = 1;
 		if (input[0] > input[1]){
 			std::vector<IntPair> tmp;
 			tmp.push_back(pair[1]);
@@ -81,27 +76,58 @@ std::vector<IntPair> sort(std::vector<long unsigned int> input){
 	std::vector<int> main;
 	std::vector<int> pending;
 	std::vector<IntPair> sorted;
-	// main = 1 et a chaque fois + 2;
-	// pending = %2 = 0 et le dernier si impaire;
-	// 201
-	for (int i = 0; i < main.size(); i++){
-		if (pending[i] > main[i])
-			swap(pd, main);// on trie DANS les pairs
+	if (input.size() % 2 == 1){ // si un nombre impaire d'input donc un boloss
+		for (long unsigned int i = 0; i < input.size() - 1; i++){
+			if (i % 2 == 1)
+				pending.push_back(input[i]);
+			else
+				main.push_back(input[i]);
+		}
+		pending.push_back(input.back());
 	}
-	sorted = sort(main);
-	std::vector<int> copyPending = pending;
-	for(int i = 0; i <= main.size(); i++;){
-		main[i] = sorted[i].value;
-		pending[i] = copyPending[sorted[i].index]; // on reorganise pending comme on a organise main;
+	else{
+		for (long unsigned int i = 0; i < input.size(); i++){
+			if (i % 2 == 1)
+				pending.push_back(input[i]);
+			else
+				main.push_back(input[i]);
+		}
 	}
-	//pending.erase(pending[0]); // On passe le premier pendind devant le premier main car il est forcement + petit
-	//ATTENTION PENDING [0] AU DEBUT DE MAIN ET DFIN DE PENDING
-	main.pushdevant(pending[0]);
-	std::vector<IntPair> newPending = pendingManagement(pending);
-	main = insert(main, newPending);
-	std::vector<IntPair> final;
-	for (int i = 0; i < main.size(); i++){
-		final.push_back(IntPair(main[i], i));
-	}
-	return (final);
+
+	std::cout << "MAIN:\n" << std::endl;
+	for (unsigned long i = 0; i < main.size(); i++)
+		std::cout << main[i] << " ";
+	std::cout << "\n" << std::endl;
+
+	std::cout << "PENDING:\n" << std::endl;
+	for (unsigned long i = 0; i < pending.size(); i++)
+		std::cout << pending[i] << " ";
+	std::cout << "\n" << std::endl;
+
+	
+	std::vector<IntPair> lol;
+	return (lol);
+	// // main = 1 et a chaque fois + 2;
+	// // pending = %2 = 0 et le dernier si impaire;
+	// // 201
+	// for (int i = 0; i < main.size(); i++){
+	// 	if (pending[i] > main[i])
+	// 		swap(pd, main);// on trie DANS les pairs
+	// }
+	// sorted = sort(main);
+	// std::vector<int> copyPending = pending;
+	// for(int i = 0; i <= main.size(); i++;){
+	// 	main[i] = sorted[i].value;
+	// 	pending[i] = copyPending[sorted[i].index]; // on reorganise pending comme on a organise main;
+	// }
+	// //pending.erase(pending[0]); // On passe le premier pendind devant le premier main car il est forcement + petit
+	// //ATTENTION PENDING [0] AU DEBUT DE MAIN ET DFIN DE PENDING
+	// main.pushdevant(pending[0]);
+	// std::vector<IntPair> newPending = pendingManagement(pending);
+	// main = insert(main, newPending);
+	// std::vector<IntPair> final;
+	// for (int i = 0; i < main.size(); i++){
+	// 	final.push_back(IntPair(main[i], i));
+	// }
+	// return (final);
 }
