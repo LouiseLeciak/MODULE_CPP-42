@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:23:01 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 15:09:11 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 15:26:57 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ std::vector<IntPair> sort(std::vector<long unsigned int> input){
 	std::vector<int> main;
 	std::vector<int> pending;
 	std::vector<IntPair> sorted;
+	// ranger les main et les pending
 	if (input.size() % 2 == 1){ // si un nombre impaire d'input donc un boloss
 		for (long unsigned int i = 0; i < input.size() - 1; i++){
 			if (i % 2 == 1)
@@ -85,7 +86,7 @@ std::vector<IntPair> sort(std::vector<long unsigned int> input){
 		}
 		pending.push_back(input.back());
 	}
-	else{
+	else{ // nombre pair d'input
 		for (long unsigned int i = 0; i < input.size(); i++){
 			if (i % 2 == 1)
 				pending.push_back(input[i]);
@@ -93,27 +94,17 @@ std::vector<IntPair> sort(std::vector<long unsigned int> input){
 				main.push_back(input[i]);
 		}
 	}
-
-	std::cout << "MAIN:\n" << std::endl;
-	for (unsigned long i = 0; i < main.size(); i++)
-		std::cout << main[i] << " ";
-	std::cout << "\n" << std::endl;
-
-	std::cout << "PENDING:\n" << std::endl;
-	for (unsigned long i = 0; i < pending.size(); i++)
-		std::cout << pending[i] << " ";
-	std::cout << "\n" << std::endl;
-
 	
-	std::vector<IntPair> lol;
-	return (lol);
-	// // main = 1 et a chaque fois + 2;
-	// // pending = %2 = 0 et le dernier si impaire;
-	// // 201
-	// for (int i = 0; i < main.size(); i++){
-	// 	if (pending[i] > main[i])
-	// 		swap(pd, main);// on trie DANS les pairs
-	// }
+	//sort inside pairs
+	for (long unsigned int i = 0; i < main.size(); i++){
+		if (pending[i] > main[i]){
+			std::vector<int> tmp;
+			tmp.push_back(pending[i]);
+			pending[i] = main[i];
+			main[i] = tmp[0];
+		}
+	}
+	
 	// sorted = sort(main);
 	// std::vector<int> copyPending = pending;
 	// for(int i = 0; i <= main.size(); i++;){
