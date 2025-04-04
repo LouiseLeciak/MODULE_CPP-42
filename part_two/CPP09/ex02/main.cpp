@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 23:40:54 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/05 00:21:27 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,6 @@ int main(int ac, char *av[]){
 	
 	for (unsigned long i = 0; i < input.size(); i++)
 		sorted.push_back(IntPair(input[i], i));
-	
-for (unsigned long i = 0; i < sorted.size(); i++)
-{
-	
-		std::cout << sorted[i].value << " ";
-		std::cout << sorted[i].index << " ";
-}
-	std::cout << std::endl;
-	std::cout << "input.size(): " << sorted.size() << std::endl;
 	
 	sort(sorted);
 
