@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:03 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 14:02:56 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 20:29:53 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 class IntPair 
 { 
 	public:
-		IntPair(int v, int i){
+		IntPair(long unsigned int v, long unsigned int i){
 			value = v;
 			index = i;
 		};
-		int value;
-		int index; 
+		long unsigned int value;
+		long unsigned int index; 
 
 };
 
 std::vector<int> insert(std::vector<int> main, std::vector<IntPair> pending);
-std::vector<IntPair> pendingManagement(std::vector<int> pending);
+std::vector<IntPair> pendingManagement(std::vector<long unsigned int> pending);
 std::vector<IntPair> sort(std::vector<long unsigned int> input);
 
 

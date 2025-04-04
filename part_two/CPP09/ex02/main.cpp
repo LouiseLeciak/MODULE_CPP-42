@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 13:53:23 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/04 19:43:28 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ int main(int ac, char *av[]){
 		std::cout << "Double not allowed." << std::endl;
 		return (-1);
 	}
+	std::cout << "INPUT:" << std::endl;
+	for (unsigned long i = 0; i < input.size(); i++)
+		std::cout << input[i] << " ";
+	std::cout << "input.size(): " << input.size() << std::endl;
+	std::cout << std::endl;
 	
 	std::vector<IntPair> sorted = sort(input);
 
@@ -72,5 +77,7 @@ int main(int ac, char *av[]){
 	for (unsigned long i = 0; i < sorted.size(); i++)
 		std::cout << sorted[i].value << " ";
 	std::cout << std::endl;
+	std::cout << "sorted.size(): " << sorted.size() << std::endl;
+
 	return(0);
 }
