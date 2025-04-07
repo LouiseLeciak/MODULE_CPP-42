@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/07 13:26:53 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/07 13:39:13 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main(int ac, char *av[]){
 		sorted_d.push_back(IntPair(input[i], i));
 	}
 	
-	std::cout << "Before: " << std::endl;
+	std::cout << "Before: ";
 	for (unsigned long i = 0; i < input.size(); i++)
 		std::cout << input[i] << " ";
 	std::cout << std::endl;
@@ -101,8 +101,8 @@ int main(int ac, char *av[]){
 	std::cout << std::endl;
     std::cout << std::endl;
 
-    std::cout << std::fixed << std::setprecision(4) << "Time to process a range of " << ac - 1 << " elements with std::vector: " << (double) (c_end_vec - c_start_vec) / CLOCKS_PER_SEC << " ms" << std::endl;
-    std::cout << std::fixed << std::setprecision(4) <<  "Time to process a range of " << ac - 1 << " elements with std::deque:   " << (double) (c_end_lst - c_start_lst) / CLOCKS_PER_SEC << " ms" << std::endl;
+    std::cout << std::fixed << std::setprecision(5) << "Time to process a range of " << ac - 1 << " elements with std::vector: " << (double) (c_end_vec - c_start_vec) / CLOCKS_PER_SEC << " ms" << std::endl;
+    std::cout << std::fixed << std::setprecision(5) <<  "Time to process a range of " << ac - 1 << " elements with std::deque:   " << (double) (c_end_lst - c_start_lst) / CLOCKS_PER_SEC << " ms" << std::endl;
 
 	return(0);
 }
