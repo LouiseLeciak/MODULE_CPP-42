@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:03 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/04 23:28:35 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/07 13:07:28 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #define PMERGEME_HPP
 
 #include <vector>
-#include <sys/time.h>
-#include <iostream>
+#include <deque>
 
 class IntPair 
 { 
@@ -29,11 +28,13 @@ class IntPair
 
 };
 
-std::vector<IntPair> insert(std::vector<IntPair> main, std::vector<IntPair> pending);
-std::vector<IntPair> pendingManagement(std::vector<IntPair> pending);
-void sort(std::vector<IntPair>& input);
+std::vector<IntPair> insert_v(std::vector<IntPair> main, std::vector<IntPair> pending);
+std::vector<IntPair> pendingManagement_v(std::vector<IntPair> pending);
+void sort_v(std::vector<IntPair>& input);
 
-
+std::deque<IntPair> insert_d(std::deque<IntPair> main, std::deque<IntPair> pending);
+std::deque<IntPair> pendingManagement_d(std::deque<IntPair> pending);
+void sort_d(std::deque<IntPair>& input);
 
 #endif
 

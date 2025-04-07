@@ -6,12 +6,15 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/05 00:21:27 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/07 13:26:53 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PMergeMe.hpp"
 #include <cstdlib>
+#include <iomanip>
+#include <iostream>
+#include <ctime>
 
 // parser de l'input, que des chiffres, pas de doublon, si doublon = erreur
 int	parseInput(int ac, char *av[]){
@@ -43,40 +46,63 @@ int main(int ac, char *av[]){
 		std::cout << "Invalid input." << std::endl;
 		return (-1);
 	}
-	if (ac == 2){
+	if (ac == 2)
 		std::cout << av[1] << std::endl;
-	}
 	
 	std::vector<long unsigned int> input;
-	for (int i = 1; av[i]; i++){
+	for (int i = 1; av[i]; i++)
 		input.push_back(std::atoi(av[i]));
-	}
 	if (checkDouble(input) == -1){
 		std::cout << "Double not allowed." << std::endl;
 		return (-1);
 	}
-	std::vector<IntPair> sorted;
+	std::vector<IntPair> sorted_v;
+	std::deque<IntPair> sorted_d;
+
 	
+	for (unsigned long i = 0; i < input.size(); i++){
+		sorted_v.push_back(IntPair(input[i], i));
+		sorted_d.push_back(IntPair(input[i], i));
+	}
+	
+	std::cout << "Before: " << std::endl;
 	for (unsigned long i = 0; i < input.size(); i++)
-		sorted.push_back(IntPair(input[i], i));
-	
-	sort(sorted);
-
-	// time management
-	struct timeval tv1, tv2;
-	gettimeofday(&tv1, NULL);
-	gettimeofday(&tv2, NULL);
-	double time1 = (double) (tv2.tv_sec - tv1.tv_sec);
-	time1 = (double) ((time1 * 1000000) + (tv2.tv_usec - tv1.tv_usec));
-	std::cout << "Time to process a range of " << sorted.size() << " elements";
-	std::cout << " with std::vector :  " << time1 << " us" << std::endl;
-
-	
-	//print juste le vector sorted
-	for (unsigned long i = 0; i < sorted.size(); i++)
-		std::cout << sorted[i].value << " ";
+		std::cout << input[i] << " ";
 	std::cout << std::endl;
-	std::cout << "sorted.size(): " << sorted.size() << std::endl;
+
+	
+	sort_v(sorted_v);
+	sort_d(sorted_d);
+	
+	//////////////////
+	//time and print//
+	//////////////////
+	
+    const std::clock_t c_start_vec = std::clock();
+    sort_v(sorted_v);    
+    const std::clock_t c_end_vec = std::clock();
+
+    std::cout << std::endl;
+    std::cout << "VEC After:  ";
+   	for (unsigned long i = 0; i < sorted_v.size(); i++)
+		std::cout << sorted_v[i].value << " ";
+	std::cout << std::endl;
+    
+    const std::clock_t c_start_lst = std::clock();
+    sort_d(sorted_d);
+    const std::clock_t c_end_lst = std::clock();
+
+    
+    std::cout << std::endl;
+
+    std::cout << "DEQUE After:  ";
+    	for (unsigned long i = 0; i < sorted_d.size(); i++)
+		std::cout << sorted_d[i].value << " ";
+	std::cout << std::endl;
+    std::cout << std::endl;
+
+    std::cout << std::fixed << std::setprecision(4) << "Time to process a range of " << ac - 1 << " elements with std::vector: " << (double) (c_end_vec - c_start_vec) / CLOCKS_PER_SEC << " ms" << std::endl;
+    std::cout << std::fixed << std::setprecision(4) <<  "Time to process a range of " << ac - 1 << " elements with std::deque:   " << (double) (c_end_lst - c_start_lst) / CLOCKS_PER_SEC << " ms" << std::endl;
 
 	return(0);
 }
