@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 13:23:01 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/09 10:41:21 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:59:44 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -340,7 +340,7 @@ void sort_d(std::deque<IntPair>& input){
 		}
 	}
 	
-	main.insert(main.begin(), IntPair(pending[0]));
+	main.push_front(IntPair(pending[0]));
 	
 	std::deque<IntPair> newPending = pendingManagement_d(pending);
 
