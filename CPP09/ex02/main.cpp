@@ -6,19 +6,19 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/07 13:39:13 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/09 10:21:55 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PMergeMe.hpp"
+#include "PmergeMe.hpp"
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
 #include <ctime>
 
-// parser de l'input, que des chiffres, pas de doublon, si doublon = erreur
+
 int	parseInput(int ac, char *av[]){
-	if (ac == 1) // si pas de num
+	if (ac == 1)
 		return (-1);
 	for (int i = 1; av[i]; i++){
 		for (int j = 0; av[i][j]; j++){
@@ -46,8 +46,6 @@ int main(int ac, char *av[]){
 		std::cout << "Invalid input." << std::endl;
 		return (-1);
 	}
-	if (ac == 2)
-		std::cout << av[1] << std::endl;
 	
 	std::vector<long unsigned int> input;
 	for (int i = 1; av[i]; i++)

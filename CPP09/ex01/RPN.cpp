@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:44:41 by lleciak           #+#    #+#             */
-/*   Updated: 2025/03/06 12:59:14 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/09 10:54:28 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,5 @@ int	getNbStack(std::string input){
 		i++;
 	}
 	std::cout << nb.top() << std::endl;
-	// proteger les divisions par 0
-	// proteger si + de deux chiffres avant l'operateur
 	return (0);
 }

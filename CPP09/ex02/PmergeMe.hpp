@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PMergeMe.hpp                                       :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:03 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/07 13:07:28 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/09 10:05:58 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 class IntPair 
 { 
 	public:
-		IntPair(long unsigned int v, long unsigned int i){
-			value = v;
-			index = i;
-		};
+		IntPair(long unsigned int v, long unsigned int i);
+		~IntPair();
 		long unsigned int value;
 		long unsigned int index; 
+		IntPair(const IntPair &copy);
+		IntPair();
+		IntPair &operator=(const IntPair &copy);
 
 };
 

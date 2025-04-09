@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:26:50 by lleciak           #+#    #+#             */
-/*   Updated: 2025/02/28 13:56:53 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/09 08:29:37 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void	get_result(std::map<std::string, long double> data, char *text){
 
     demand.is_open();
 	if (!demand.is_open()){
-		std::cout << "error opening file." << std::endl;}
+		std::cout << "error opening file." << std::endl;
+        return;}
     std::cout << "date | value" << std::endl;
     while (demand.good())
     {

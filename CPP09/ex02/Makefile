@@ -6,16 +6,16 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/03 07:09:53 by lleciak           #+#    #+#              #
-#    Updated: 2025/04/04 14:08:57 by lleciak          ###   ########.fr        #
+#    Updated: 2025/04/09 10:06:25 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##########################################################
 #######ARGUMENTS
 
-NAME            = PMergeMe
+NAME            = PmergeMe
 CXXFLAGS        = -Wall -Wextra -Werror -std=c++98 -g3
-FILES           = main.cpp PMergeMe.cpp
+FILES           = main.cpp PmergeMe.cpp
 OBJECTS         = $(FILES:.cpp=.o)
 CXX             = c++
 RM              = rm -f
