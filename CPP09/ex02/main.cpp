@@ -6,7 +6,7 @@
 /*   By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 11:06:51 by lleciak           #+#    #+#             */
-/*   Updated: 2025/04/09 10:21:55 by lleciak          ###   ########.fr       */
+/*   Updated: 2025/04/14 09:35:19 by lleciak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ int main(int ac, char *av[]){
 		std::cout << input[i] << " ";
 	std::cout << std::endl;
 
-	
-	sort_v(sorted_v);
-	sort_d(sorted_d);
 	
 	//////////////////
 	//time and print//
